@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Microsoft.Extensions.Logging;
-using AGLCats.Models;
+using Assignment.Models;
 using System.Net.Http.Headers;
 
-namespace AGLCats.Controllers
+namespace Assignment.Controllers
 {
     [ApiVersion("1.0")]
     [Produces("application/json")]

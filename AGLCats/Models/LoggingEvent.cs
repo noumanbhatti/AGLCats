@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AGLCats.Models
+namespace Assignment.Models
 {
     public class LoggingEvent
     {
