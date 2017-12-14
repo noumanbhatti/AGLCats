@@ -1,0 +1,22 @@
+﻿<div class="page-header">
+    <h2>{{pageTitle}}</h2>
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+<div *ngIf="error">
+    <h4>{{errorMessage}}</h4>
+</div>
+
+<div class="form-group">
+    <h3>Male</h3>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let cat of catsForMaleOwner">{{cat}}</li>
+    </ul>
+</div>
+
+<div class="form-group">
+    <h3>Female</h3>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let cat of catsForFemaleOwner">{{cat}}</li>
+    </ul>
+</div>
