@@ -12,7 +12,7 @@ export class PetsService {
     }
 
     getPets(gender: string, pet_type: string): Observable<string[]> {
-        return this._http.get<string[]>(this._baseUrl + 'api/pets?gender=' + gender + '&pet_type=' + pet_type);
+        return this._http.get<string[]>(this._baseUrl + 'api/v1/pets?gender=' + gender + '&pet_type=' + pet_type);
     }
     
 }

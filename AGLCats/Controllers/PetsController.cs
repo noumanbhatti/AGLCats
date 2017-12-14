@@ -11,8 +11,10 @@ using System.Net.Http.Headers;
 
 namespace AGLCats.Controllers
 {
+    [ApiVersion("1.0")]
     [Produces("application/json")]
-    [Route("api/pets")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ControllerName("pets")]
     public class PetsController : Controller
     {
         private readonly ILogger _logger;

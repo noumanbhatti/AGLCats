@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -11,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AGLCats
 {
-    public class Startup
+    public partial class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -23,6 +19,9 @@ namespace AGLCats
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Required for API Versioning
+            ConfigureAPIVersioning(services);
+
             services.AddLogging();
             services.AddMvc();
         }
