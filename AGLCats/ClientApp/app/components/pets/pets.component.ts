@@ -1,4 +1,5 @@
 ﻿import { Component ,OnInit} from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { PetsService } from './pets.service';
 
@@ -11,34 +12,46 @@ export class PetsComponent implements OnInit {
     public errorMessage: string='';
     public loading: boolean;
     public error: boolean = false;
-    public catsForMaleOwner: string[];
-    public catsForFemaleOwner: string[];
+    public petsForMaleOwner: string[];
+    public petsForFemaleOwner: string[];
+    public petTypes: string[];
+    public petForm: FormGroup;
 
-    constructor(private petsService: PetsService) {
-        this.loading = true;
+    constructor(private petsService: PetsService, private fb: FormBuilder) {
+        this.petTypes = ["Cat", "Dog", "Fish"];
     }
 
     ngOnInit()
     {
-        this.getCatsMaleOwner();
-        this.getCatsFemaleOwner();
+        this.petForm = this.fb.group({
+            petType: 'Cat',
+        })
+
+        this.getData();
     }
 
-    getCatsMaleOwner()
+    getCatsMaleOwner(type:string)
     {
-        this.petsService.getPets('male','cat')
+        this.petsService.getPets('male',type)
             .subscribe(data => {
-                this.catsForMaleOwner = data;
+                this.petsForMaleOwner = data;
                 this.loading = false;
             }, (error: any) => this.errorOccured(error));
     }
 
-    getCatsFemaleOwner() {
-        this.petsService.getPets('female','cat')
+    getCatsFemaleOwner(type:string) {
+        this.petsService.getPets('female',type)
             .subscribe(data => {
-                this.catsForFemaleOwner = data;
+                this.petsForFemaleOwner = data;
                 this.loading = false;
             }, (error: any) => this.errorOccured(error));
+    }
+
+    getData()
+    {
+        this.loading = true;
+        this.getCatsMaleOwner(this.petForm.controls['petType'].value);
+        this.getCatsFemaleOwner(this.petForm.controls['petType'].value);
     }
 
 
